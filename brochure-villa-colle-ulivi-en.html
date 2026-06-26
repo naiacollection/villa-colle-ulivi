@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Colle Ulivi — Pescia, Toscana</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #B8682A;
+    --terracotta-light: #D4895A;
+    --terracotta-pale: #F2DFD0;
+    --olive: #6B7A3E;
+    --olive-dark: #3D4820;
+    --olive-mid: #8A9A50;
+    --olive-pale: #EBF0D8;
+    --cream: #F7F1E8;
+    --warm-white: #FDFAF5;
+    --dark: #1E1A10;
+    --mid: #4A3C22;
+    --stone: #A89878;
+    --stone-light: #D8CEBC;
+    --stone-pale: #EDE7DA;
+    --ink: #1A1410;
+    --gold: #C4993A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #E8E0D4;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  /* ─── PAGES ─── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 6mm;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    background: var(--dark);
+    min-height: 297mm;
+    position: relative;
+  }
+  .cover-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    opacity: 0.42;
+  }
+  .cover-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      165deg,
+      rgba(20,15,5,0.3) 0%,
+      rgba(30,26,16,0.4) 30%,
+      rgba(30,26,16,0.82) 65%,
+      rgba(20,15,5,0.97) 100%
+    );
+  }
+  .cover-body {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+    padding: 14mm 16mm 12mm;
+  }
+  .cover-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover-topbar-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .cover-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 8mm;
+  }
+  .cover-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 4mm;
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 5mm;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--terracotta-light);
+    display: block;
+  }
+  .cover-rule {
+    width: 30mm;
+    height: 1px;
+    background: var(--terracotta);
+    margin-bottom: 5mm;
+  }
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(220,210,195,0.8);
+    max-width: 110mm;
+    line-height: 1.65;
+  }
+  .cover-bottom {
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    padding-top: 5mm;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 8mm;
+    align-items: center;
+  }
+  .cover-stat { display: flex; flex-direction: column; }
+  .cover-stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: white;
+    line-height: 1;
+  }
+  .cover-stat-lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1mm;
+  }
+  .cover-sep {
+    width: 0.5px;
+    height: 8mm;
+    background: rgba(255,255,255,0.15);
+  }
+  .cover-welcome-badge {
+    margin-left: auto;
+    border: 0.5px solid rgba(196,153,58,0.6);
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 2mm 5mm;
+  }
+
+  /* ─── INNER PAGES ─── */
+  .p {
+    padding: 13mm 15mm;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ph {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 3mm;
+    border-bottom: 0.5px solid var(--stone-light);
+    margin-bottom: 7mm;
+    flex-shrink: 0;
+  }
+  .ph-l {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+  .ph-logo { width: 22px; opacity: 0.7; }
+  .ph-name {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .ph-section {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--stone);
+  }
+  .ph-pg {
+    font-family: 'Jost', sans-serif;
+    font-size: 8px;
+    color: var(--stone-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── SECTION HEADINGS ─── */
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5mm;
+  }
+  .h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 4mm;
+  }
+  .h1 em { font-style: italic; color: var(--terracotta); }
+  .h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 2mm;
+  }
+  .rule { width: 10mm; height: 1.5px; background: var(--terracotta); margin-bottom: 5mm; }
+  .rule-olive { width: 10mm; height: 1.5px; background: var(--olive); margin-bottom: 5mm; }
+
+  /* ─── WELCOME PAGE ─── */
+  .welcome-layout {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 7mm;
+    margin-bottom: 6mm;
+  }
+  .welcome-photo {
+    width: 100%;
+    height: 72mm;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+  .welcome-photo-side {
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+  }
+  .welcome-photo-sm {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 4mm;
+  }
+  .body-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 9.5px;
+    color: var(--mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── INFO GRID ─── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin-bottom: 5mm;
+  }
+  .info-tile {
+    background: var(--cream);
+    border-top: 2px solid var(--terracotta);
+    padding: 3.5mm 4mm;
+  }
+  .info-tile.olive { border-top-color: var(--olive); }
+  .info-tile.gold { border-top-color: var(--gold); }
+  .info-tile.stone { border-top-color: var(--stone); }
+  .info-tile-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1mm;
+  }
+  .info-tile-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .info-tile-sub {
+    font-size: 8px;
+    font-family: 'Jost', sans-serif;
+    color: var(--stone);
+    margin-top: 1mm;
+    line-height: 1.4;
+  }
+
+  /* ─── WIFI ─── */
+  .wifi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5mm;
+    margin-bottom: 5mm;
+  }
+  .wifi-card {
+    background: var(--dark);
+    padding: 3.5mm 4.5mm;
+    border-left: 2.5px solid var(--terracotta);
+  }
+  .wifi-net {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 1.5mm;
+  }
+  .wifi-ssid {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5mm;
+  }
+  .wifi-pass {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── EMERGENCY BAR ─── */
+  .em-bar {
+    background: var(--olive-dark);
+    padding: 4mm 5mm;
+    display: flex;
+    gap: 8mm;
+    align-items: center;
+  }
+  .em-item { display: flex; flex-direction: column; }
+  .em-lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--olive-pale);
+    opacity: 0.7;
+    margin-bottom: 0.5mm;
+  }
+  .em-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1;
+  }
+  .em-sep { width: 0.5px; height: 8mm; background: rgba(255,255,255,0.2); }
+
+  /* ─── APPARTAMENTI ─── */
+  .apt-card {
+    border: 0.5px solid var(--stone-light);
+    margin-bottom: 5mm;
+    overflow: hidden;
+  }
+  .apt-card-inner {
+    display: grid;
+    grid-template-columns: 55mm 1fr;
+  }
+  .apt-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 55mm;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .apt-body {
+    padding: 5mm 6mm;
+  }
+  .apt-badge {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--terracotta);
+    padding: 1mm 3mm;
+    display: inline-block;
+    margin-bottom: 2.5mm;
+  }
+  .apt-badge.two { background: var(--olive-dark); }
+  .apt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 1.5mm;
+  }
+  .apt-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--terracotta);
+    margin-bottom: 3mm;
+  }
+  .apt-stats {
+    display: flex;
+    gap: 4mm;
+    margin-bottom: 3mm;
+    flex-wrap: wrap;
+  }
+  .apt-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+    font-family: 'Jost', sans-serif;
+    font-size: 8.5px;
+    color: var(--mid);
+  }
+  .apt-stat-icon {
+    width: 3mm;
+    height: 3mm;
+    border-radius: 50%;
+    background: var(--stone-light);
+    flex-shrink: 0;
+  }
+  .apt-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 3mm;
+    font-weight: 300;
+  }
+  .apt-rating {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+  .apt-stars {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .apt-reviews {
+    font-family: 'Jost', sans-serif;
+    font-size: 8px;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── ROOM DETAIL PAGE ─── */
+  .room-header-photo {
+    width: calc(100% + 30mm);
+    margin-left: -15mm;
+    height: 62mm;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+    margin-bottom: 6mm;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 4mm; }
+
+  /* ─── ROOM GALLERY ─── */
+  .room-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2mm;
+    margin-bottom: 5mm;
+  }
+  .room-gallery img {
+    width: 100%;
+    height: 38mm;
+    object-fit: cover;
+    display: block;
+  }
+  .room-gallery img:first-child {
+    height: 100%;
+    min-height: 78mm;
+  }
+
+  /* ─── SERVICES LIST ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 4mm;
+  }
+  .service-row {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    padding: 2mm 0;
+    border-bottom: 0.5px solid var(--stone-pale);
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    color: var(--mid);
+  }
+  .service-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--olive-mid);
+    flex-shrink: 0;
+  }
+
+  /* ─── CAMERE CARD ─── */
+  .camera-card {
+    background: var(--cream);
+    border-top: 2px solid var(--terracotta);
+    padding: 4mm 5mm;
+    margin-bottom: 3mm;
+  }
+  .camera-card.two { border-top-color: var(--olive); }
+  .camera-card.three { border-top-color: var(--stone); }
+  .camera-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1mm;
+    line-height: 1.2;
+  }
+  .camera-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    color: var(--mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ─── POOL PAGE ─── */
+  .pool-photo {
+    width: calc(100% + 30mm);
+    margin-left: -15mm;
+    height: 65mm;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    margin-bottom: 6mm;
+  }
+  .pool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+    margin-bottom: 5mm;
+  }
+  .rule-list { list-style: none; padding: 0; }
+  .rule-list li {
+    display: flex;
+    gap: 3mm;
+    padding: 2.5mm 0;
+    border-bottom: 0.5px solid var(--stone-light);
+    font-family: 'Jost', sans-serif;
+    font-size: 9.5px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+  .rule-list li::before {
+    content: '—';
+    color: var(--terracotta);
+    font-size: 9px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .warn-box {
+    background: var(--terracotta-pale);
+    border-left: 3px solid var(--terracotta);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+  }
+  .warn-box strong {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 1.5mm;
+  }
+  .warn-box p {
+    font-size: 9.5px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ─── DESTINATIONS ─── */
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin-bottom: 5mm;
+  }
+  .dest { display: flex; flex-direction: column; }
+  .dest-color {
+    width: 100%;
+    height: 28mm;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-bottom: 2.5mm;
+    padding: 4mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .dest-color img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .dest-color-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,15,5,0.7) 0%, transparent 60%);
+  }
+  .dest-img-label {
+    position: relative;
+    z-index: 2;
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .dest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .dest-time {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5mm;
+  }
+  .dest-desc {
+    font-size: 10px;
+    font-family: 'Jost', sans-serif;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* ─── RESTAURANTS ─── */
+  .resto-area { margin-bottom: 5mm; }
+  .area-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 7px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--olive-mid);
+    border-bottom: 0.5px solid var(--stone-light);
+    padding-bottom: 2mm;
+    margin-bottom: 3mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+  .area-label::before {
+    content: '';
+    width: 3mm;
+    height: 3mm;
+    border-radius: 50%;
+    background: var(--olive-mid);
+    flex-shrink: 0;
+  }
+  .resto {
+    padding: 2.5mm 0 2.5mm 3mm;
+    border-bottom: 0.5px solid var(--stone-pale);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2mm;
+    align-items: start;
+  }
+  .resto:last-child { border-bottom: none; }
+  .resto-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .resto-addr {
+    font-family: 'Jost', sans-serif;
+    font-size: 8.5px;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+  .resto-phone {
+    font-size: 8.5px;
+    color: var(--mid);
+    font-weight: 400;
+  }
+  .chip {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1mm 2.5mm;
+    white-space: nowrap;
+    margin-top: 0.5mm;
+  }
+  .chip-close { background: var(--terracotta-pale); color: var(--terracotta); }
+  .chip-wine { background: var(--olive-pale); color: var(--olive-dark); }
+  .chip-pizza { background: var(--stone-pale); color: var(--mid); }
+
+  /* ─── EXPERIENCES ─── */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 5mm;
+  }
+  .exp-card {
+    padding: 4mm 5mm;
+    color: white;
+  }
+  .exp-icon {
+    font-size: 16px;
+    margin-bottom: 2mm;
+    display: block;
+  }
+  .exp-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    margin-bottom: 1.5mm;
+    line-height: 1.2;
+  }
+  .exp-desc {
+    font-size: 10px;
+    font-family: 'Jost', sans-serif;
+    opacity: 0.8;
+    line-height: 1.55;
+  }
+
+  /* ─── TREK ─── */
+  .trek {
+    background: var(--cream);
+    border-top: 2px solid var(--olive);
+    padding: 4mm 5mm;
+    margin-bottom: 3.5mm;
+  }
+  .trek-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3mm;
+    margin-bottom: 2mm;
+  }
+  .trek-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .trek-meta {
+    display: flex;
+    gap: 1.5mm;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .badge {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.08em;
+    padding: 1mm 2.5mm;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .easy { background: var(--olive-pale); color: var(--olive-dark); }
+  .medium { background: #FAE8D4; color: #8B4A1A; }
+  .hard { background: #F4D4D4; color: #8B1A1A; }
+  .km { background: var(--stone-pale); color: var(--mid); }
+  .trek-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 10.5px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* ─── PRACTICAL ─── */
+  .prac {
+    background: var(--cream);
+    border-top: 2px solid var(--olive);
+    padding: 4mm 5mm;
+    margin-bottom: 3.5mm;
+  }
+  .prac-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 2mm;
+    line-height: 1.2;
+  }
+  .prac-body {
+    font-family: 'Jost', sans-serif;
+    font-size: 10.5px;
+    color: var(--mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .checkin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 5mm;
+  }
+  .checkin-card {
+    background: var(--dark);
+    padding: 4mm 5mm;
+  }
+  .checkin-lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 1.5mm;
+  }
+  .checkin-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: white;
+    line-height: 1;
+  }
+  .checkin-sub {
+    font-size: 8px;
+    font-family: 'Jost', sans-serif;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1mm;
+  }
+
+  /* ─── COSTI ─── */
+  .cost-bar {
+    background: var(--terracotta);
+    padding: 3.5mm 5mm;
+    display: flex;
+    gap: 8mm;
+    align-items: center;
+    margin-bottom: 5mm;
+  }
+  .cost-item { display: flex; flex-direction: column; }
+  .cost-lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5mm;
+  }
+  .cost-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: white;
+    line-height: 1;
+  }
+  .cost-sep { width: 0.5px; height: 8mm; background: rgba(255,255,255,0.25); }
+
+  /* ─── MARKETS / BORGH ─── */
+  .mkt-row {
+    display: flex;
+    gap: 4mm;
+    padding: 3mm 0;
+    border-bottom: 0.5px solid var(--stone-light);
+    align-items: center;
+  }
+  .mkt-dot {
+    width: 5mm;
+    height: 5mm;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+  .mkt-dot.olive { background: var(--olive-mid); }
+  .mkt-lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.5mm;
+  }
+  .mkt-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .mkt-sub {
+    font-size: 8.5px;
+    font-family: 'Jost', sans-serif;
+    color: var(--stone);
+  }
+
+  /* ─── BACK COVER ─── */
+  .back {
+    background: var(--dark);
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .back-photo {
+    width: 100%;
+    height: 70mm;
+    object-fit: cover;
+    object-position: center 70%;
+    display: block;
+    opacity: 0.55;
+  }
+  .back-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12mm 18mm;
+    text-align: center;
+  }
+  .back-logo { margin-bottom: 6mm; }
+  .back-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: rgba(230,220,200,0.85);
+    line-height: 1.65;
+    max-width: 120mm;
+    margin-bottom: 8mm;
+  }
+  .back-rule { width: 20mm; height: 1px; background: var(--terracotta); margin: 0 auto 8mm; }
+  .back-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    width: 100%;
+    max-width: 130mm;
+    margin-bottom: 8mm;
+  }
+  .bc {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    padding: 3.5mm 4mm;
+    text-align: center;
+  }
+  .bc-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 6.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 1.5mm;
+    opacity: 0.8;
+  }
+  .bc-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1.1;
+  }
+  .bc-sub {
+    font-size: 8px;
+    font-family: 'Jost', sans-serif;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.5mm;
+  }
+  .back-footer {
+    font-family: 'Jost', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+  .borgh-strip {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 2mm;
+    margin-top: 4mm;
+  }
+  .borgh {
+    background: rgba(255,255,255,0.06);
+    border-top: 1.5px solid var(--olive-mid);
+    padding: 3mm 2mm;
+    text-align: center;
+  }
+  .borgh-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+  .borgh-note {
+    font-size: 7px;
+    font-family: 'Jost', sans-serif;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.3;
+    margin-top: 0.5mm;
+  }
+
+  /* ─── SVG ICON ─── */
+  .olive-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+  }
+
+  /* ─── PAGE ACCENT LINE ─── */
+  .accent-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--terracotta) 0%, var(--olive) 100%);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PAGINA 1 — COPERTINA
+════════════════════════════════════════ -->
+<div class="page cover">
+  <img class="cover-photo"
+    src="https://a0.muscache.com/im/pictures/hosting/Hosting-1588430128483605121/original/6cc13a8a-191a-4452-8c60-8110311d4b4f.jpeg"
+    alt="Villa Colle Ulivi">
+  <div class="cover-gradient"></div>
+  <div class="cover-body">
+    <div class="cover-topbar">
+      <span class="cover-topbar-label">Pescia · Tuscany · Italy</span>
+      <span class="cover-topbar-label">Welcome Book</span>
+    </div>
+    <div class="cover-center">
+      <div class="cover-eyebrow">Historic villa on the Tuscan hills</div>
+      <div class="cover-title">
+        Villa<br>Colle<br><em>Ulivi</em>
+      </div>
+      <div class="cover-rule"></div>
+      <div class="cover-subtitle">
+        Tra ulivi secolari, piscina panoramica<br>e il fascino senza tempo della Toscana
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <span class="cover-stat-val">2</span>
+          <span class="cover-stat-lbl">Apartments</span>
+        </div>
+        <div class="cover-sep"></div>
+        <div class="cover-stat">
+          <span class="cover-stat-val">11</span>
+          <span class="cover-stat-lbl">Max guests</span>
+        </div>
+        <div class="cover-sep"></div>
+        <div class="cover-stat">
+          <span class="cover-stat-val">5</span>
+          <span class="cover-stat-lbl">Bedrooms</span>
+        </div>
+        <div class="cover-welcome-badge">Welcome Book</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2 — WELCOME
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <svg class="ph-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8 2 5 6 5 10c0 5.5 7 12 7 12s7-6.5 7-12c0-4-3-8-7-8z" stroke="#A89878" stroke-width="1.2" fill="none"/>
+          <circle cx="12" cy="10" r="2.5" stroke="#A89878" stroke-width="1.2"/>
+        </svg>
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Essential information</span>
+      </div>
+      <span class="ph-pg">02</span>
+    </div>
+
+    <div class="eyebrow" style="margin-bottom:1mm;">Welcome to Villa Colle Ulivi</div>
+    <div class="h1" style="margin-bottom:1mm;">Everything you <em>need</em> right away</div>
+    <div class="rule"></div>
+
+    <!-- WiFi — 4 reti disponibili -->
+    <div style="background:var(--dark); color:white; padding:4.5mm 5mm; margin-bottom:4mm;">
+      <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone-light); margin-bottom:3mm;">Wi-Fi — Available networks (use the one with the best signal)</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:3mm;">
+        <div style="border-left:2px solid var(--gold); padding-left:2.5mm;">
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light); margin-bottom:0.5mm;">Network</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; color:white; margin-bottom:1mm;">Starlink</div>
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light);">Password</div>
+          <div style="font-family:'Jost',sans-serif; font-size:8px; color:var(--gold); letter-spacing:0.03em;">Villacolleuliviss</div>
+        </div>
+        <div style="border-left:2px solid var(--gold); padding-left:2.5mm;">
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light); margin-bottom:0.5mm;">Network</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; color:white; margin-bottom:1mm;">villacolleolivi</div>
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light);">Password</div>
+          <div style="font-family:'Jost',sans-serif; font-size:8px; color:var(--gold); letter-spacing:0.03em;">villacolleolivi</div>
+        </div>
+        <div style="border-left:2px solid var(--gold); padding-left:2.5mm;">
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light); margin-bottom:0.5mm;">Network</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; color:white; margin-bottom:1mm;">EOLO</div>
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light);">Password</div>
+          <div style="font-family:'Jost',sans-serif; font-size:8px; color:var(--gold); letter-spacing:0.03em;">mAetUh6d9</div>
+        </div>
+        <div style="border-left:2px solid var(--gold); padding-left:2.5mm;">
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light); margin-bottom:0.5mm;">Network</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:600; color:white; margin-bottom:1mm;">Fastweb</div>
+          <div style="font-family:'Jost',sans-serif; font-size:7px; color:var(--stone-light);">Password</div>
+          <div style="font-family:'Jost',sans-serif; font-size:8px; color:var(--gold); letter-spacing:0.03em;">lececchine</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Griglia orari -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin-bottom:5mm;">
+      <div style="background:var(--cream); border-top:2.5px solid var(--terracotta); padding:4mm;">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1.5mm;">Check-in</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--dark); line-height:1;">15:00</div>
+        <div style="font-family:'Jost',sans-serif; font-size:7.5px; color:var(--mid); margin-top:1.5mm;">until 02:00 · self check-in</div>
+      </div>
+      <div style="background:var(--cream); border-top:2.5px solid var(--olive-dark); padding:4mm;">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:1.5mm;">Check-out</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--dark); line-height:1;">11:00</div>
+        <div style="font-family:'Jost',sans-serif; font-size:7.5px; color:var(--mid); margin-top:1.5mm;">both apartments by 11:00</div>
+      </div>
+      <div style="background:var(--cream); border-top:2.5px solid var(--stone); padding:4mm;">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); margin-bottom:1.5mm;">Max guests</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--dark); line-height:1;">11</div>
+        <div style="font-family:'Jost',sans-serif; font-size:7.5px; color:var(--mid); margin-top:1.5mm;">Apt.1: 7 · Apt.2: 4</div>
+      </div>
+    </div>
+
+    <!-- Regole pratiche -->
+    <div style="margin-bottom:5mm;">
+      <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone); border-bottom:1px solid var(--stone-light); padding-bottom:1.5mm; margin-bottom:3mm;">Rules and practical information</div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3mm;">
+
+        <div style="display:flex; flex-direction:column; gap:2.5mm;">
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🗑</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:1mm;">Waste sorting</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.6;">Bins are outside the villa, down the main road on the <strong>left</strong>.<br>
+              ⬛ <strong>Grey</strong> — general waste &nbsp;·&nbsp; 🟫 <strong>Brown</strong> — organic<br>
+              🟦 <strong>Blue</strong> — plastic &amp; cans &nbsp;·&nbsp; ⬜ <strong>White</strong> — paper</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🌙</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:0.5mm;">Quiet hours</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.4;">From 23:30 to 08:00 please keep noise to a minimum, both indoors and in outdoor areas — terrace, garden and poolside.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🚭</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:0.5mm;">No smoking indoors</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.4;">Smoking is permitted only on the terrace and in the garden. Please use the ashtrays provided and do not leave cigarette butts.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:2.5mm;">
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🐾</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:0.5mm;">Pets</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.4;">Dogs are welcome! Please keep them on a leash in common areas and bring their own bed — pets are not allowed on beds or sofas.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🏠</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:0.5mm;">At check-out</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.4;">Fold the linen, close windows and shutters, leave the keys on the kitchen table. The final cleaning is included.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:3mm; align-items:flex-start; padding:2.5mm; background:var(--cream);">
+            <div style="font-size:13px; line-height:1; margin-top:0.5mm; flex-shrink:0;">🅿️</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-size:9px; font-weight:500; color:var(--dark); margin-bottom:0.5mm;">Parking</div>
+              <div style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.4;">Parking privato gratuito all'interno del cancello della proprietà. Il codice di apertura è fornito al check-in.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra emergenze -->
+    <div class="em-bar">
+      <div class="em-item">
+        <span class="em-lbl">Host — Asia</span>
+        <span class="em-val">+39 ··· ··· ····</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">Emergency</span>
+        <span class="em-val">112</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">Emergency medical</span>
+        <span class="em-val">118</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">Pescia Hospital</span>
+        <span class="em-val">0572 ··· ···</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3 — THE APARTMENTS (overview)
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <svg class="ph-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8 2 5 6 5 10c0 5.5 7 12 7 12s7-6.5 7-12c0-4-3-8-7-8z" stroke="#A89878" stroke-width="1.2" fill="none"/>
+          <circle cx="12" cy="10" r="2.5" stroke="#A89878" stroke-width="1.2"/>
+        </svg>
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Gli Apartments</span>
+      </div>
+      <span class="ph-pg">03</span>
+    </div>
+
+    <div class="eyebrow">Our home</div>
+    <div class="h1">Gli <em>Apartments</em></div>
+    <div class="rule"></div>
+
+
+    <p class="body-text" style="margin-bottom:6mm;">
+      Villa Colle Ulivi houses two independent apartments within a historic Renaissance-era villa, nestled among the olive trees and cypresses of the Pescia hills. Each apartment has its own access and unique character, sharing the panoramic pool, garden and private parking.
+    </p>
+
+    <!-- Due colonne appartamenti -->
+    <div class="two-col" style="gap:5mm; margin-bottom:5mm;">
+
+      <!-- Apartment 1 -->
+      <div style="border-top:2.5px solid var(--terracotta); padding-top:4mm;">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--terracotta); margin-bottom:2mm;">Apartment 1</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--dark); line-height:1.1; margin-bottom:1mm;">Tuscan Elegance</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:11px; font-style:italic; color:var(--stone); margin-bottom:3mm;">Pool, private terrace and relaxation</div>
+
+        <div style="display:flex; gap:3mm; flex-wrap:wrap; margin-bottom:3mm;">
+          <span style="background:var(--cream); border-top:1.5px solid var(--terracotta); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">7 guests</span>
+          <span style="background:var(--cream); border-top:1.5px solid var(--terracotta); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">3 bedrooms</span>
+          <span style="background:var(--cream); border-top:1.5px solid var(--terracotta); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">4 beds</span>
+          <span style="background:var(--cream); border-top:1.5px solid var(--terracotta); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">2 bathrooms</span>
+        </div>
+
+        <ul class="rule-list">
+          <li>Exposed wooden beam ceilings and original terracotta floors</li>
+          <li>Crystal chandelier and authentic antique furniture</li>
+          <li>Panoramic terrace with views over Florence and the hills</li>
+          <li>Arched French windows, dining room for up to 8</li>
+          <li>2 double bedrooms + 1 twin bedroom</li>
+          <li>2 full bathrooms · Air conditioning</li>
+          <li>Check-out by 11:00</li>
+        </ul>
+      </div>
+
+      <!-- Apartment 2 -->
+      <div style="border-top:2.5px solid var(--olive-dark); padding-top:4mm;">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:2mm;">Apartment 2</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--dark); line-height:1.1; margin-bottom:1mm;">Authentic Tuscan Retreat</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:11px; font-style:italic; color:var(--stone); margin-bottom:3mm;">Pool, panoramic views and relaxation</div>
+
+        <div style="display:flex; gap:3mm; flex-wrap:wrap; margin-bottom:3mm;">
+          <span style="background:var(--olive-pale); border-top:1.5px solid var(--olive-dark); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">4 guests</span>
+          <span style="background:var(--olive-pale); border-top:1.5px solid var(--olive-dark); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">2 bedrooms</span>
+          <span style="background:var(--olive-pale); border-top:1.5px solid var(--olive-dark); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">3 beds</span>
+          <span style="background:var(--olive-pale); border-top:1.5px solid var(--olive-dark); font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); padding:1.5mm 2.5mm;">1 bathroom</span>
+        </div>
+
+        <ul class="rule-list">
+          <li>Independent access, private wing of the villa</li>
+          <li>Living corridor with stone arches and exposed beams</li>
+          <li>Arched windows with breathtaking views over the hills</li>
+          <li>Rustic Tuscan kitchen with its iconic turquoise door</li>
+          <li>1 wrought-iron double bedroom + 1 twin</li>
+          <li>Private garden with outdoor table</li>
+          <li>Check-out by 11:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--olive-pale); border-left:3px solid var(--olive); padding:3.5mm 5mm;">
+      <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:1mm;">Shared amenities between both apartments</div>
+      <p class="body-text">Piscina panoramica stagionale (aprile–settembre) · Giardino con ulivi secolari · Parking privato gratuito · Wi-Fi · Biancheria da letto e asciugamani · Welcome Kit</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 4 — THE POOL
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">The Pool</span>
+      </div>
+      <span class="ph-pg">04</span>
+    </div>
+
+    <div class="eyebrow">Shared space</div>
+    <div class="h1">The Panoramic <em>Pool</em></div>
+    <div class="rule"></div>
+
+    <p class="body-text" style="margin-bottom:6mm;">
+      The panoramic pool of Villa Colle Ulivi is one of its most treasured features. Surrounded by ancient olive trees and sun loungers, it offers a breathtaking view over the gentle Tuscan hills. Available seasonally from May to September (weather permitting), it is shared by guests of both apartments.
+    </p>
+
+    <div class="pool-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom:2mm;">Hours and rules</div>
+        <ul class="rule-list">
+          <li>Hours: <strong>9:00 – 20:00</strong> · Season: May – September</li>
+          <li>Depth: <strong>1.40 metres</strong> — no jumping or diving from the edge</li>
+          <li>Shower and foot disinfection required before entering</li>
+          <li>Wait at least 3 hours after eating before swimming</li>
+          <li>Children under 12 must be supervised by an adult at all times</li>
+          <li>Footwear required in the pool area (slippery surface)</li>
+          <li>No glass bottles or glasses allowed</li>
+          <li>Upon leaving: close umbrellas and the wooden gate</li>
+          <li>No lifeguard on duty — use at your own risk</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:2mm;">What to expect</div>
+        <ul class="rule-list">
+          <li>Panoramic views over the Tuscan hills</li>
+          <li>Ancient olive trees all around</li>
+          <li>Sun loungers and umbrellas</li>
+          <li>Access from both apartments</li>
+          <li>Quiet and private atmosphere</li>
+          <li>Crystal-clear water, regularly maintained</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>Important</strong>
+      <p>The pool is shared with guests of the other apartment. We invite you to respect the common spaces and enjoy this corner of paradise with care and consideration for those who share it with you. The villa is a historic property — please treat it as your own home.</p>
+    </div>
+
+    <div style="background:var(--olive-pale); border-top: 2px solid var(--olive); padding:4mm 5mm;">
+      <div class="eyebrow" style="color:var(--olive-dark); margin-bottom:1.5mm;">The garden</div>
+      <p class="body-text">Il magnifico giardino terrazzato con ulivi secolari circonda tutta la proprietà. L'Apartment 2 dispone inoltre di un giardino posteriore privato con tavolo e sedie per pranzi all'aperto in totale riservatezza. La proprietà è immersa nella natura toscana autentica.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 — DESTINATIONS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Where to Go</span>
+      </div>
+      <span class="ph-pg">05</span>
+    </div>
+
+    <div class="eyebrow">Exploring Tuscany</div>
+    <div class="h1">Must-See <em>Destinations</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:6mm;">
+      Villa Colle Ulivi's strategic location allows you to reach some of Tuscany's most beautiful art cities and medieval villages within minutes. The A11 Florence–Sea motorway is just a few minutes away, as is Pescia train station (3 min by car).
+    </p>
+
+    <div class="dest-grid" style="margin-bottom:5mm;">
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #8B6E4A, #C4A07A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">10 min</span>
+        </div>
+        <div class="dest-time">10 minutes</div>
+        <div class="dest-name">Montecatini Terme</div>
+        <div class="dest-desc">Famous Art Nouveau spa town, UNESCO World Heritage since 2021. Historic thermal baths, shopping, restaurants and the charming village of Montecatini Alto reachable by funicular.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #5C6B3A, #8A9A50);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">8 min</span>
+        </div>
+        <div class="dest-time">8 minutes</div>
+        <div class="dest-name">Collodi</div>
+        <div class="dest-desc">Medieval village famous as the birthplace of Pinocchio's creator. The Pinocchio Park and the magnificent Garden of Villa Garzoni are unmissable stops for families.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #6B5030, #B8682A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">20 min</span>
+        </div>
+        <div class="dest-time">20 minutes</div>
+        <div class="dest-name">Lucca</div>
+        <div class="dest-desc">Renaissance jewel with its intact city walls. Cycling along the ramparts, Romanesque churches, lively squares and refined gastronomy. One of Italy's most beautiful cities.</div>
+      </div>
+    </div>
+
+    <div class="dest-grid">
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #4A3C22, #8B6040);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">25 min</span>
+        </div>
+        <div class="dest-time">25 minutes</div>
+        <div class="dest-name">Pistoia</div>
+        <div class="dest-desc">A medieval gem often overlooked by mass tourism. Piazza del Duomo with San Zeno Cathedral, the Baptistery and the frescoes of the Ospedale del Ceppo. Excellent base for the Natural Park.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #2A3D60, #4A6898);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">35-45 min</span>
+        </div>
+        <div class="dest-time">35–45 minutes</div>
+        <div class="dest-name">Versilia & the Sea</div>
+        <div class="dest-desc">Viareggio, Forte dei Marmi and the stunning beaches of the Versilia coast are reachable in under an hour. Nightlife, beach clubs and the famous Viareggio Carnival.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #8B4020, #C46040);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">45 min</span>
+        </div>
+        <div class="dest-time">45 minutes</div>
+        <div class="dest-name">Firenze</div>
+        <div class="dest-desc">The cradle of the Renaissance: the Uffizi, the Duomo, Ponte Vecchio, Michelangelo's David. One of the world's most extraordinary cities of art, right at your doorstep.</div>
+      </div>
+    </div>
+
+    <div class="borgh-strip" style="background:none; margin-top:5mm;">
+      <div class="borgh" style="background:var(--cream);">
+        <div class="borgh-name" style="color:var(--dark);">Pisa</div>
+        <div class="borgh-note" style="color:var(--stone);">45 min · Tower</div>
+      </div>
+      <div class="borgh" style="background:var(--cream);">
+        <div class="borgh-name" style="color:var(--dark);">Siena</div>
+        <div class="borgh-note" style="color:var(--stone);">1h 20min · Palio</div>
+      </div>
+      <div class="borgh" style="background:var(--cream);">
+        <div class="borgh-name" style="color:var(--dark);">Cinque Terre</div>
+        <div class="borgh-note" style="color:var(--stone);">1h 30min · UNESCO</div>
+      </div>
+      <div class="borgh" style="background:var(--cream);">
+        <div class="borgh-name" style="color:var(--dark);">Pescia</div>
+        <div class="borgh-note" style="color:var(--stone);">5 min · Market</div>
+      </div>
+      <div class="borgh" style="background:var(--cream);">
+        <div class="borgh-name" style="color:var(--dark);">Thermal Spa</div>
+        <div class="borgh-note" style="color:var(--stone);">10 min · Spa</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 6 — WHERE TO EAT
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Where to Eat</span>
+      </div>
+      <span class="ph-pg">06</span>
+    </div>
+
+    <div class="eyebrow">Tuscan Flavours</div>
+    <div class="h1">Where to <em>Eat</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:5mm;">
+      The Valdinievole and the Lucca hills offer an authentic and genuine Tuscan cuisine. From the bistros of Montecatini Alto to the trattorias of Pescia, to the fine dining restaurants of Montecarlo di Lucca — these are our favourite places.
+    </p>
+
+    <!-- Fine dining callout -->
+    <div style="background:var(--dark); border-left:3px solid var(--gold); padding:3mm 5mm; margin-bottom:4mm; display:flex; align-items:center; gap:5mm;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--gold); flex-shrink:0;">✦</div>
+      <div>
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1mm;">Fine Dining</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:13px; color:white; line-height:1.4;">
+          <strong style="font-weight:400;">La Pecora Nera</strong> · <strong style="font-weight:400;">Forassiepi</strong> · <strong style="font-weight:400;">Montaccolle</strong> — the three excellence addresses in the area, for a special evening.
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="gap:5mm;">
+      <div>
+        <div class="resto-area">
+          <div class="area-label">Pescia — 5 minutes</div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Da Nerone</div>
+              <div class="resto-addr">Pescia · Simple, genuine Tuscan cuisine — excellent food</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Traditional</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Pizzeria Basilico</div>
+              <div class="resto-addr">Pescia · Pizza and Italian cuisine</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Pizza</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Ristorante Monte a Pescia</div>
+              <div class="resto-addr">Pescia · Specialities of meat and Tuscan steak</div>
+            </div>
+            <div style="text-align:right;"><div class="chip" style="background:#F4D4D4;color:#8B1A1A;">Steak</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Da Sandrino</div>
+              <div class="resto-addr">Pescia · Classic Tuscan trattoria, casual and welcoming</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Traditional</div></div>
+          </div>
+        </div>
+
+        <div class="resto-area">
+          <div class="area-label">Montecarlo di Lucca — 20 minutes</div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Forassiepi</div>
+              <div class="resto-addr">Montecarlo · Creative high-end Tuscan cuisine</div>
+            </div>
+            <div style="text-align:right;"><div class="chip" style="background:var(--dark);color:var(--gold);">Fine Dining</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">La Piccola Enoteca</div>
+              <div class="resto-addr">Montecarlo · DOC wines and classic Tuscan cuisine</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Traditional</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">In Cucina</div>
+              <div class="resto-addr">Montecarlo · Modern osteria with a Tuscan touch</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-wine">Modern</div></div>
+          </div>
+        </div>
+
+        <div class="resto-area">
+          <div class="area-label">Montecatini Terme & dintorni — 10 minutes</div>
+          <div class="resto">
+            <div><div class="resto-name">Il Casorino</div><div class="resto-addr">Meat specialities and Tuscan steak</div></div>
+            <div style="text-align:right;"><div class="chip" style="background:#F4D4D4;color:#8B1A1A;">Steak</div></div>
+          </div>
+          <div class="resto">
+            <div><div class="resto-name">Il Gallo</div><div class="resto-addr">Classic Tuscan cuisine, simple and genuine</div></div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Traditional</div></div>
+          </div>
+          <div class="resto">
+            <div><div class="resto-name">Antico Colle</div><div class="resto-addr">Casual Tuscan trattoria, great food</div></div>
+            <div style="text-align:right;"><div class="chip chip-pizza">Traditional</div></div>
+          </div>
+          <div class="resto">
+            <div><div class="resto-name">La Cascina</div><div class="resto-addr">Glamorous spot, refined and elegant atmosphere</div></div>
+            <div style="text-align:right;"><div class="chip" style="background:var(--mid);color:white;">Glamour</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="resto-area">
+          <div class="area-label">Montecatini Alto — 15 minutes</div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">La Pecora Nera</div>
+              <div class="resto-addr">Montecatini Alto · High cuisine with panoramic views over the plain</div>
+            </div>
+            <div style="text-align:right;"><div class="chip" style="background:var(--dark);color:var(--gold);">Fine Dining</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Montaccolle</div>
+              <div class="resto-addr">Montecatini Alto · Excellence cuisine, a unique experience</div>
+            </div>
+            <div style="text-align:right;"><div class="chip" style="background:var(--dark);color:var(--gold);">Fine Dining</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Caffè Giusti</div>
+              <div class="resto-addr">Montecatini Alto · Modern osteria, aperitivos and contemporary Tuscan cuisine</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-wine">Modern</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Casa Gala</div>
+              <div class="resto-addr">Montecatini Alto · Modern restaurant with a Tuscan touch, intimate setting</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-wine">Modern</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">Apogeo</div>
+              <div class="resto-addr">Montecatini Alto · Modern Tuscan cuisine, views over the Valdinievole</div>
+            </div>
+            <div style="text-align:right;"><div class="chip chip-wine">Modern</div></div>
+          </div>
+          <div class="resto">
+            <div>
+              <div class="resto-name">La Baita</div>
+              <div class="resto-addr">Montecatini Alto · Meat specialities and Tuscan steak d'eccellenza</div>
+            </div>
+            <div style="text-align:right;"><div class="chip" style="background:#F4D4D4;color:#8B1A1A;">Steak</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mkt-row" style="margin-top:2mm;">
+      <div class="mkt-dot olive"></div>
+      <div>
+        <div class="mkt-lbl">Pescia Market</div>
+        <div class="mkt-val">Every Saturday morning — Pescia town centre</div>
+        <div class="mkt-sub">Fresh local produce, cured meats, cheeses, seasonal fruit and vegetables</div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt-dot"></div>
+      <div>
+        <div class="mkt-lbl">Nearby supermarkets</div>
+        <div class="mkt-val">Coop and Esselunga — Pescia (5 min)</div>
+        <div class="mkt-sub">Open every day · For everyday shopping</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 7 — EXCLUSIVE EXPERIENCES
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Experiences</span>
+      </div>
+      <span class="ph-pg">07</span>
+    </div>
+
+    <div class="eyebrow">On request</div>
+    <div class="h1">Experiences <em>Esclusive</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:5mm;">
+      To make your stay truly unforgettable, Villa Colle Ulivi offers a selection of curated bespoke experiences. All can be booked directly through the host with at least 48 hours notice.
+    </p>
+
+    <div class="exp-grid" style="margin-bottom:3mm;">
+      <div class="exp-card" style="background: var(--terracotta);">
+        <span class="exp-icon">👨‍🍳</span>
+        <div class="exp-name">Tuscan Cooking Class</div>
+        <div class="exp-desc">Learn the secrets of authentic Tuscan cooking with a local chef. From fresh pasta to ribollita, from cantucci to vin santo. Cook together, eat together. An experience that sends you home with memories and recipes.</div>
+      </div>
+      <div class="exp-card" style="background: var(--olive-dark);">
+        <span class="exp-icon">🍽️</span>
+        <div class="exp-name">Private Chef Dinner</div>
+        <div class="exp-desc">An exclusive dinner prepared by a private chef in your kitchen or on the terrace at sunset over the Tuscan hills. Customisable menu featuring top-quality local and seasonal produce.</div>
+      </div>
+      <div class="exp-card" style="background: var(--mid);">
+        <span class="exp-icon">🔥</span>
+        <div class="exp-name">Barbecue Experience</div>
+        <div class="exp-desc">An open-air barbecue among the villa's olive trees, featuring a selection of prime Tuscan meats, grilled vegetables, bruschette and local wine. The magic of fire, landscape and great company all in one.</div>
+      </div>
+      <div class="exp-card" style="background: var(--gold);">
+        <span class="exp-icon">🍕</span>
+        <div class="exp-name">Pizza Experience</div>
+        <div class="exp-desc">Learn to make authentic Neapolitan pizza with a master pizza maker. Dough, toppings and baking in the wood-fired oven. Perfect for families and groups — loads of fun guaranteed, even for the little ones.</div>
+      </div>
+    </div>
+
+    <div class="exp-grid" style="margin-bottom:4mm;">
+      <div class="exp-card" style="background: var(--dark);">
+        <span class="exp-icon">🍷</span>
+        <div class="exp-name">Wine Tasting</div>
+        <div class="exp-desc">Guided tasting of excellent Tuscan wines: Montecarlo DOC, Bianco Valdinievole DOC, Chianti and Brunello. With local cheese and charcuterie pairings, led by a sommelier on the villa terrace or at a local winery.</div>
+      </div>
+      <div class="exp-card" style="background: var(--stone);">
+        <span class="exp-icon">🚐</span>
+        <div class="exp-name">City Tours & Day Trips</div>
+        <div class="exp-desc">Private guided tours to Florence, Lucca, Pisa, Siena or to the beaches of Versilia and Cinque Terre. With a dedicated driver from the villa gates, tailored to your interests and pace.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--terracotta-pale); border-left:3px solid var(--terracotta); padding:4mm 5mm;">
+      <div class="eyebrow" style="color:var(--terracotta); margin-bottom:1.5mm;">How to book</div>
+      <p class="body-text">All experiences are arranged by the host on request. Contact her via WhatsApp or Airbnb with at least <strong style="font-weight:500;">48 hours notice</strong>. Some experiences require a minimum number of participants. Prices vary by experience type and number of guests — ask for a personalised quote.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 8 — HIKING & TRAILS
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Hiking & Nature</span>
+      </div>
+      <span class="ph-pg">08</span>
+    </div>
+
+    <div class="eyebrow">Walking through the hills</div>
+    <div class="h1">Hiking & <em>Trails</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:5mm;">
+      The countryside around Villa Colle Ulivi is a paradise for nature walkers. Trails wind through olive groves, chestnut forests, medieval villages and extraordinary panoramic viewpoints. Most routes are suitable for dogs on a leash — the area is pet friendly.
+    </p>
+
+    <!-- Percorso della Fiaba — featured -->
+    <div style="background:var(--dark); padding:5mm 6mm; margin-bottom:4mm; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; right:0; height:2.5px; background:linear-gradient(90deg, var(--gold), var(--terracotta));"></div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:4mm; margin-bottom:3mm;">
+        <div>
+          <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5mm;">✦ Trail from the Villa — Not to be missed</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:white; line-height:1.1; margin-bottom:1mm;">The Fairy Tale Path</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic; color:rgba(220,200,160,0.7);">Villa Colle Ulivi → Collodi · Pinocchio Park</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1.5mm; flex-shrink:0; text-align:right;">
+          <span style="background:var(--gold); color:var(--dark); font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.08em; text-transform:uppercase; padding:1mm 2.5mm;">Easy</span>
+          <span style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6); font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.08em; padding:1mm 2.5mm;">~8 km · ~2h 30min</span>
+          <span style="background:var(--olive); color:white; font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.08em; padding:1mm 2.5mm;">🐾 Pet Friendly</span>
+        </div>
+      </div>
+      <p style="font-family:'Jost',sans-serif; font-size:10.5px; color:rgba(255,255,255,0.75); line-height:1.65; font-weight:300;">
+        The trail starts just <strong style="color:white; font-weight:400;">2 minutes walk from the villa</strong> and winds through olive groves, woods and bucolic Tuscan landscapes all the way to Collodi — the medieval village where Carlo Lorenzini set the adventures of Pinocchio. The path is well-marked, shaded and suitable for everyone, including children and dogs on a leash. The return can be made on foot or by taxi/car. An early morning start is recommended to enjoy the cool air and golden light over the olive trees.
+      </p>
+    </div>
+
+    <!-- Altri percorsi -->
+    <div class="trek" style="margin-bottom:3mm;">
+      <div class="trek-head">
+        <div class="trek-name">Ancient Olive Grove Trail</div>
+        <div class="trek-meta">
+          <span class="badge easy">Easy</span>
+          <span class="badge km">2–3 km</span>
+          <span class="badge easy" style="background:var(--olive-pale);">🐾 Pet Friendly</span>
+        </div>
+      </div>
+      <p class="trek-desc">Anello tra gli ulivi antichi intorno alla villa. Partenza dal cancello della proprietà, panorami sulle colline e sui borghi. Perfetto per il mattino o il tramonto, adatto a tutti i livelli e ai bambini più piccoli. Durata circa 45 minutes.</p>
+    </div>
+
+    <div class="trek" style="margin-bottom:3mm;">
+      <div class="trek-head">
+        <div class="trek-name">Uzzano — The Castle Among the Hills</div>
+        <div class="trek-meta">
+          <span class="badge medium">Moderate</span>
+          <span class="badge km">6 km</span>
+          <span class="badge easy" style="background:var(--olive-pale);">🐾 Pet Friendly</span>
+        </div>
+      </div>
+      <p class="trek-desc">A trail climbing towards the medieval village of Uzzano, with its stone alleyways and panoramic tower. The route passes through oak forests and vineyards with views over the Valdinievole. Great for photography. Moderate elevation gain.</p>
+    </div>
+
+    <div class="trek" style="margin-bottom:3mm;">
+      <div class="trek-head">
+        <div class="trek-name">Buggiano Castello — The Hidden Village</div>
+        <div class="trek-meta">
+          <span class="badge medium">Moderate</span>
+          <span class="badge km">5 km</span>
+          <span class="badge easy" style="background:var(--olive-pale);">🐾 Pet Friendly</span>
+        </div>
+      </div>
+      <p class="trek-desc">A route through olive groves and fields towards the medieval village of Buggiano Castello, one of the best-preserved in the area, with its Romanesque church and stone houses. Dirt track, suitable with comfortable walking shoes.</p>
+    </div>
+
+    <div class="trek">
+      <div class="trek-head">
+        <div class="trek-name">Montalbano Trail</div>
+        <div class="trek-meta">
+          <span class="badge hard">Challenging</span>
+          <span class="badge km">12–15 km</span>
+          <span class="badge easy" style="background:var(--olive-pale);">🐾 Pet Friendly</span>
+        </div>
+      </div>
+      <p class="trek-desc">A longer and more demanding route through the Montalbano massif, among chestnut forests, olive groves and breathtaking panoramas over the Valdinievole, Florence and the coast. Ideal for experienced hikers. Bring plenty of water and proper hiking boots.</p>
+    </div>
+
+    <div style="background:var(--olive-pale); border-top:2px solid var(--olive); padding:3.5mm 5mm; margin-top:4mm;">
+      <div style="display:flex; align-items:center; gap:3mm;">
+        <span style="font-size:14px;">🐾</span>
+        <div>
+          <div style="font-family:'Jost',sans-serif; font-size:7px; letter-spacing:0.3em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:1mm;">All trails are pet friendly</div>
+          <p class="body-text">Dogs are welcome on all listed trails. Remember the leash, water for your four-legged friend and poo bags. The Tuscan countryside is perfect for exploring together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 9 — HIDDEN VILLAGES
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Hidden Villages</span>
+      </div>
+      <span class="ph-pg">09</span>
+    </div>
+
+    <div class="eyebrow">Treasures to discover</div>
+    <div class="h1">I <em>Hidden Villages</em></div>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:6mm;">
+      Far from the tourist crowds, the countryside around Pescia hides little-known medieval masterpieces. Stone villages, Romanesque churches, ancient towers and timeless panoramas. These are our favourites to explore.
+    </p>
+
+    <div class="dest-grid" style="margin-bottom:4mm;">
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #5A4A3A, #9A7A5A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">15 min</span>
+        </div>
+        <div class="dest-time">15 minutes · ★ Must-see</div>
+        <div class="dest-name">Montecatini Alto</div>
+        <div class="dest-desc">The medieval hilltop village above Montecatini Terme, reachable by a historic funicular. Silent alleyways, a square with views over the plain, the Romanesque church of San Pietro and a timeless atmosphere. No cars, just peace.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #3A4A2A, #6A7A4A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">20 min</span>
+        </div>
+        <div class="dest-time">20 minutes · Vino DOC</div>
+        <div class="dest-name">Montecarlo di Lucca</div>
+        <div class="dest-desc">A medieval gem on the Lucca hills, famous for its Montecarlo DOC — one of Tuscany's most elegant white wines. Intact medieval walls, a 14th-century fortress and cellars where you can taste the local wines.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #4A3A5A, #7A5A8A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">10 min</span>
+        </div>
+        <div class="dest-time">10 minutes · Medievale</div>
+        <div class="dest-name">Buggiano Castello</div>
+        <div class="dest-desc">One of the best-preserved medieval villages in the Valdinievole. Cobbled streets, stone houses, the oratory of Santa Maria della Neve and a panoramic tower. Very few tourists — authentic and genuine atmosphere.</div>
+      </div>
+    </div>
+
+    <div class="dest-grid" style="margin-bottom:4mm;">
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #6A4A2A, #A07A4A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">15 min</span>
+        </div>
+        <div class="dest-time">15 minutes · Panoramic</div>
+        <div class="dest-name">Uzzano</div>
+        <div class="dest-desc">A small hilltop village with a medieval tower and extraordinary views over the Valdinievole. Walking up through olive groves and vineyards you reach the historic centre, with the church of San Jacopo and walls that tell centuries of history.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #2A4A4A, #4A7A6A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">25 min</span>
+        </div>
+        <div class="dest-time">25 minutes · IGP Lenticchie</div>
+        <div class="dest-name">Sorana</div>
+        <div class="dest-desc">A small village on the Pescia hills, famous for the prized Sorana Lentils IGP — a gastronomic rarity to be savoured on the spot. Unspoilt landscape, fresh air and a local market where you can buy authentic products.</div>
+      </div>
+      <div class="dest">
+        <div class="dest-color" style="background: linear-gradient(135deg, #4A3A2A, #8A6A3A);">
+          <div class="dest-color-overlay"></div>
+          <span class="dest-img-label">10 min</span>
+        </div>
+        <div class="dest-time">10 minutes · Romanico</div>
+        <div class="dest-name">Pietrabuona</div>
+        <div class="dest-desc">A medieval village in pietra serena with the beautiful Romanesque parish church of San Tommaso. Small but perfectly preserved, with postcard-worthy views of the surrounding hills. Often overlooked by tourists — all yours.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--cream); border-top:2px solid var(--gold); padding:4mm 5mm;">
+      <div class="eyebrow" style="color:var(--gold); margin-bottom:2mm;">Host's tip</div>
+      <div class="two-col">
+        <p class="body-text">Visiting these villages in the morning or late afternoon gives unforgettable light and atmosphere. Avoid the midday hours in summer. Wear comfortable shoes — the cobbled streets can be uneven.</p>
+        <p class="body-text">Almost all these villages have a small bar or osteria for a break. Always try the house wine and ask about local products. Residents are generally happy to share the history of their village.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 10 — PRACTICAL INFORMATION
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="accent-line-top"></div>
+  <div class="p">
+    <div class="ph">
+      <div class="ph-l">
+        <span class="ph-name">Villa Colle Ulivi</span>
+        <span style="color:var(--stone-light); font-size:8px; margin: 0 1mm;">·</span>
+        <span class="ph-section">Practical Information</span>
+      </div>
+      <span class="ph-pg">10</span>
+    </div>
+
+    <div class="eyebrow">Good to know</div>
+    <div class="h1">Practical <em>Information</em></div>
+    <div class="rule"></div>
+
+    <div class="two-col" style="margin-bottom:4mm;">
+      <div>
+        <div class="prac" style="border-top-color:var(--terracotta);">
+          <div class="prac-head">Check-in & Check-out</div>
+          <div class="prac-body">
+            <strong style="font-weight:500;">Apartment 1:</strong> Check-in 15:00–02:00 · Check-out by 11:00<br>
+            <strong style="font-weight:500;">Apartment 2:</strong> Check-in 15:00–02:00 · Check-out by 11:00<br><br>
+            Early or late check-in on request (subject to availability). Contact the host.
+          </div>
+        </div>
+        <div class="prac">
+          <div class="prac-head">Identity documents</div>
+          <div class="prac-body">As required by Italian law, all guests must provide valid identity documents before check-in. Passport or national ID card are accepted.</div>
+        </div>
+        <div class="prac">
+          <div class="prac-head">Pets</div>
+          <div class="prac-body">Dogs are welcome! They must be kept on a leash in common areas. Pets must sleep in their own bed — not on beds or sofas. Please inform the host in advance about any animals.</div>
+        </div>
+      </div>
+      <div>
+        <div class="prac" style="border-top-color:var(--olive);">
+          <div class="prac-head">House Rules</div>
+          <div class="prac-body">
+            · No smoking inside the apartments<br>
+            · Quiet hours from 23:30 to 08:00<br>
+            · Do not exceed the maximum number of guests<br>
+            · Respect common areas and the garden<br>
+            · Report any damage to the host promptly<br>
+            · No parties or events without prior authorisation
+          </div>
+        </div>
+        <div class="prac">
+          <div class="prac-head">Historic Property</div>
+          <div class="prac-body">Villa Colle Ulivi is a historic property with period architectural features: steps, irregular terracotta floors, low ceilings in some areas and antique furnishings are all part of its authentic charm. Please move carefully.</div>
+        </div>
+        <div class="prac">
+          <div class="prac-head">Parking</div>
+          <div class="prac-body">Parking privato gratuito all'interno della proprietà. Le istruzioni di accesso sono incluse nel messaggio di check-in inviato dall'host.</div>
+        </div>
+        <div class="prac">
+          <div class="prac-head">Electrical panel</div>
+          <div class="prac-body"><strong>App. 1 (Tuscan Elegance):</strong> in cucina.<br><strong>App. 2 (Rifugio Toscano):</strong> nel disimpegno di fronte al bagno.<br>Si prega di usare l'aria condizionata con moderazione — i consumi sono molto elevati.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info locali rapide -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin-bottom:0;">
+      <div style="padding:3mm; background:var(--cream); border-top:2px solid var(--terracotta);">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1.5mm;">Local markets</div>
+        <p style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.5; margin:0;"><strong>Pescia</strong> — Saturday morning<br><strong>Montecatini Terme</strong> — Thursday morning</p>
+      </div>
+      <div style="padding:3mm; background:var(--cream); border-top:2px solid var(--olive-dark);">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:1.5mm;">Pescia Taxi</div>
+        <p style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.6; margin:0;">+39 0572 444 474<br>+39 340 884 7665<br>+39 335 494 261</p>
+      </div>
+      <div style="padding:3mm; background:var(--cream); border-top:2px solid var(--stone);">
+        <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); margin-bottom:1.5mm;">Montecatini Taxi</div>
+        <p style="font-family:'Jost',sans-serif; font-size:8.5px; color:var(--mid); line-height:1.6; margin:0;">+39 0572 72262<br><br>Pescia Hospital:<br>0572 ··· ···</p>
+      </div>
+    </div>
+
+    <div class="em-bar" style="margin-top:3mm;">
+      <div class="em-item">
+        <span class="em-lbl">Emergency generale</span>
+        <span class="em-val">112</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">Emergency medical</span>
+        <span class="em-val">118</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">Fire brigade</span>
+        <span class="em-val">115</span>
+      </div>
+      <div class="em-sep"></div>
+      <div class="em-item">
+        <span class="em-lbl">After-hours pharmacy</span>
+        <span class="em-val">800 894 847</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 11 — BACK COVER
+════════════════════════════════════════ -->
+<div class="page back" style="background:var(--dark);">
+  <div class="back-body" style="position:relative; z-index:1;">
+    <div class="back-logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="17" stroke="rgba(196,153,58,0.5)" stroke-width="0.5"/>
+        <path d="M18 4C12 4 8 10 8 16c0 7 10 18 10 18S28 23 28 16c0-6-4-12-10-12z" stroke="rgba(255,255,255,0.6)" stroke-width="1" fill="none"/>
+        <circle cx="18" cy="15" r="3.5" stroke="rgba(196,153,58,0.8)" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="back-quote">
+      "Tra gli ulivi e il cielo toscano,<br>il tempo ritrova il suo ritmo antico.<br>Grazie per aver scelto Villa Colle Ulivi."
+    </div>
+    <div class="back-rule"></div>
+
+    <div class="back-contacts">
+      <div class="bc">
+        <div class="bc-label">Host</div>
+        <div class="bc-val">Asia</div>
+        <div class="bc-sub">Responds within 1 hour · 100% response rate</div>
+      </div>
+      <div class="bc">
+        <div class="bc-label">Location</div>
+        <div class="bc-val">Pescia, PT</div>
+        <div class="bc-sub">Tuscany · Valdinievole</div>
+      </div>
+      <div class="bc">
+        <div class="bc-label">Contact</div>
+        <div class="bc-val">Airbnb</div>
+        <div class="bc-sub">Available every day · Quick response</div>
+      </div>
+    </div>
+
+    <div class="borgh-strip" style="max-width:160mm;">
+      <div class="borgh">
+        <div class="borgh-name">Lucca</div>
+        <div class="borgh-note">20 min</div>
+      </div>
+      <div class="borgh">
+        <div class="borgh-name">Firenze</div>
+        <div class="borgh-note">45 min</div>
+      </div>
+      <div class="borgh">
+        <div class="borgh-name">Pisa</div>
+        <div class="borgh-note">45 min</div>
+      </div>
+      <div class="borgh">
+        <div class="borgh-name">Versilia</div>
+        <div class="borgh-note">35 min</div>
+      </div>
+      <div class="borgh">
+        <div class="borgh-name">Montecatini</div>
+        <div class="borgh-note">10 min</div>
+      </div>
+    </div>
+
+    <div style="margin-top:8mm;">
+      <div class="back-footer">Villa Colle Ulivi · Pescia, Tuscany · IT047012C2W7TNSEFB</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
