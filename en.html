@@ -1066,6 +1066,95 @@
     height: 3px;
     background: linear-gradient(90deg, var(--terracotta) 0%, var(--olive) 100%);
   }
+
+  /* ═══════════════════════════════════════════════
+     PRINT — sezioni scure → chiaro per la stampa
+     ═══════════════════════════════════════════════ */
+  @media print {
+
+    /* Cover: sfondo scuro → crema, testo → scuro */
+    .cover { background: var(--cream) !important; }
+    .cover-photo { opacity: 0.08 !important; }
+    .cover-gradient { display: none !important; }
+    .cover-topbar-label { color: var(--mid) !important; }
+    .cover-eyebrow { color: var(--terracotta) !important; }
+    .cover-title { color: var(--dark) !important; }
+    .cover-title em { color: var(--terracotta) !important; }
+    .cover-subtitle { color: var(--mid) !important; }
+    .cover-bottom { border-top-color: rgba(0,0,0,0.18) !important; }
+    .cover-stat-val { color: var(--dark) !important; }
+    .cover-stat-lbl { color: var(--mid) !important; }
+    .cover-sep { background: rgba(0,0,0,0.18) !important; }
+
+    /* Back cover: sfondo scuro → crema */
+    .back { background: var(--cream) !important; }
+    .back-photo { opacity: 0.1 !important; }
+    .back-quote { color: var(--dark) !important; }
+    .back-footer { color: var(--mid) !important; }
+    .bc { background: transparent !important; border-color: rgba(0,0,0,0.15) !important; }
+    .bc-label { color: var(--terracotta) !important; opacity: 1 !important; }
+    .bc-val { color: var(--dark) !important; }
+    .bc-sub { color: var(--mid) !important; }
+    .borgh { background: transparent !important; }
+    .borgh-name, .borgh-dist { color: var(--dark) !important; }
+
+    /* Box scuri inline (WiFi, Fine Dining callout) */
+    .prt-dark { background: var(--cream) !important;
+                border-left-color: var(--terracotta) !important; }
+    .prt-dark, .prt-dark * { color: var(--dark) !important; }
+
+    /* Check-in cards */
+    .checkin-card { background: var(--cream) !important;
+                    border: 1px solid rgba(0,0,0,0.2) !important; }
+    .checkin-val { color: var(--dark) !important; }
+    .checkin-sub { color: var(--mid) !important; }
+    .checkin-lbl { color: var(--terracotta) !important; }
+
+    /* Emergency bar: olive scuro → chiaro */
+    .em-bar { background: var(--olive-pale) !important; }
+    .em-lbl { color: var(--mid) !important; }
+    .em-val { color: var(--dark) !important; }
+
+    /* Tutti i chip → outlined */
+    .chip { background: transparent !important;
+            border: 0.8px solid var(--mid) !important;
+            color: var(--dark) !important; }
+
+    /* Apt badge scuro */
+    .apt-badge.two { background: var(--olive-pale) !important;
+                     color: var(--olive-dark) !important; }
+
+    /* Font-weight aumentato per stampa (thin fonts su sfondo chiaro) */
+    .cover-title  { font-weight: 500 !important; letter-spacing: 0 !important; }
+    .cover-eyebrow { font-weight: 600 !important; color: var(--dark) !important; }
+    .cover-subtitle { font-weight: 400 !important; color: var(--dark) !important; }
+    .cover-stat-val { font-weight: 600 !important; }
+
+    /* Back cover font */
+    .back-quote { font-weight: 400 !important; font-style: normal !important; color: var(--dark) !important; }
+    .bc-val { font-weight: 600 !important; }
+
+    /* Terracotta/gold su sfondo scuro → scuro leggibile in stampa */
+    .cover-topbar-label { color: var(--dark) !important; font-weight: 500 !important; }
+    .prt-dark .gold, .prt-dark [style*="color:var(--gold)"],
+    .prt-dark [style*="color:var(--terracotta)"] { color: var(--dark) !important; }
+
+    /* Eyebrow labels (uppercase tracking thin) → più spesso */
+    .eyebrow { font-weight: 600 !important; color: var(--dark) !important; }
+    .ph-name, .ph-section { font-weight: 500 !important; }
+
+    /* Checkin lbl thin → più leggibile */
+    .checkin-lbl { font-weight: 600 !important; color: var(--dark) !important; }
+    .checkin-sub { font-weight: 400 !important; color: var(--mid) !important; }
+
+    /* Em bar labels */
+    .em-lbl { font-weight: 600 !important; color: var(--dark) !important; }
+    .em-val  { font-weight: 700 !important; color: var(--dark) !important; }
+
+    /* Dest/borghi/terme card labels */
+    .dest-time { font-weight: 600 !important; }
+    .dest-name { font-weight: 600 !important; }
+  }
 </style>
 </head>
 <body>
@@ -1232,7 +1321,7 @@
     <div class="rule"></div>
 
     <!-- WiFi — 4 reti disponibili -->
-    <div style="background:var(--dark); color:white; padding:4.5mm 5mm; margin-bottom:4mm;">
+    <div class="prt-dark" style="background:var(--dark); color:white; padding:4.5mm 5mm; margin-bottom:4mm;">
       <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone-light); margin-bottom:3mm;">Wi-Fi — Available networks (use the one with the best signal)</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:3mm;">
         <div style="border-left:2px solid var(--gold); padding-left:2.5mm;">
@@ -1576,7 +1665,7 @@
     </p>
 
     <!-- Fine dining callout -->
-    <div style="background:var(--dark); border-left:3px solid var(--gold); padding:3mm 5mm; margin-bottom:4mm; display:flex; align-items:center; gap:5mm;">
+    <div class="prt-dark" style="background:var(--dark); border-left:3px solid var(--gold); padding:3mm 5mm; margin-bottom:4mm; display:flex; align-items:center; gap:5mm;">
       <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--gold); flex-shrink:0;">✦</div>
       <div>
         <div style="font-family:'Jost',sans-serif; font-size:6.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1mm;">Fine Dining</div>
